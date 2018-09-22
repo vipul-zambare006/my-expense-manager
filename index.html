@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>expense-manager</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #DCDCDC;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">
+            <i class="fas fa-rupee-sign" style="font-size:60px;color:#7B68EE;"></i>
+        </span>
+        <span class="align-middle"><h4><b>माझे खर्च व्यवस्थापक</b></h4></span>
+    </nav>
+
+    <div class="container-fluid">
+        <br>
+        <div class="container">
+            <div class="card bg-light mb-10" style="border:none; border-radius: 15px">
+                <div class="card-header"><b>Please Enter your expense here...</b></div>
+                <div class="card-body">
+                    <form onsubmit="addExpense(event)"><br>
+                        <div class="form-inline">
+                            <div class="input-group mb-1">
+                                <input type="text" class="form-control form-control-sm" style="width: 500px" autocomplete="off" autofocus="on" aria-describedby="emailHelp"
+                                    placeholder="उदाहरण : नवीन मोटरसायकल । ३००००" placeholder="what you spent today!!" id="inputExpense"
+                                />
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-plus-circle"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted">येथे तुमचा खर्च वरील प्रमाणे भरा..</small>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="card bg-light mb-10" style="border:none; border-radius: 15px">
+
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <span class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                September-2018
+                            </span>
+                        </h5>
+                    </div>
+
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="container h-100">
+                                <div class="row h-100 justify-content-center align-items-center">
+                                    <div class="alert alert-warning" role="alert">
+                                        आपला एकूण खर्च : <i class="fas fa-rupee-sign"></i> <b>45,678.00</b>
+                                    </div>
+
+                                    <div class="col-md-10">
+                                        <table id="expenseTable" class="table table-sm">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">item</th>
+                                                    <th scope="col">Amount Spent</th>
+                                                    <th scope="col">Clear</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Child Care </td>
+                                                    <td><i class="fas fa-rupee-sign"></i> 332,322.00</td>
+                                                    <td><i class="fas fa-trash-alt" style="color:red" onclick="deleteRow(this)"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Car Insurance </td>
+                                                    <td><i class="fas fa-rupee-sign"></i> 3,444.00</td>
+                                                    <td><i class="fas fa-trash-alt" style="color:red" onclick="deleteRow(this)"></i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script>
+    function addExpense(event) {
+        event.preventDefault();
+        let expense = document.getElementById("inputExpense").value;
+        [item, price] = expense.split('|');
+        // let node = document.createElement("li");
+        // let textNode = document.createTextNode(item);
+        // node.appendChild(textNode);
+        // let expenseList = document.getElementById("expenseList");
+        // expenseList.-appendChild(node);
+
+        let expTable = document.getElementById("expenseTable")
+        let row = expTable.insertRow(1);
+        let expense1 = row.insertCell(0);
+        let price1 = row.insertCell(1);
+
+        price = Number(price).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+
+        expense1.innerHTML = item;
+        price1.innerHTML = `<i class="fas fa-rupee-sign"></i> ${price}`;
+
+        row.insertCell(2).innerHTML = `<i class="fas fa-trash-alt" style="color:red" onClick="deleteRow(this)"></i>`
+        resetForm();
+    }
+
+    function deleteRow(r) {
+        let i = r.parentNode.parentNode.rowIndex;
+        document.getElementById("expenseTable").deleteRow(i);
+    }
+
+    function resetForm() {
+        document.getElementById("inputExpense").value = "";
+    }
+</script>
+
+</html>
