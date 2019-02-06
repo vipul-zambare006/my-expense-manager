@@ -1,0 +1,36 @@
+Expense manager: Simple app to manage daily expenses of an individual
+
+Happy flow:
+User will add him and his wife's monthly income
+Then they will start adding there expenses
+Expense will have categories 
+In the month end
+User can check pie chart / Bar chart which shows how many spent on each category
+
+According to his expenses user can validate where his money going and from where money coming
+
+ 
+Whats new:
+Adding your partner to add expenses
+Graph of money spent on each category
+
+Todo Tasks:
+1. adding your partner to add expenses
+2. simple UI to add expenses (Item and Price)
+3. Once expense added show to list (with edit and delete option)
+4. Small label: to show total expense till now 
+5. Monthly cycle
+6. Partner can also add/edit/delete expense
+7. User login
+8. storing users data to table
+9. nodejs api to store expense to mongoDB database
+10. Graph library like D3.js to show users expense graph
+11. USer can set monthly milestone on what category he wants to spent how much and app should alert user if he is reaching that limit of spending
+12. publishing app on firebase 
+13. user data security challenges
+
+How it will help me:
+1. It will help to learn Javascript / React/ D3/ Node/ firebase publishing
+2. add to my resume o showcase my project
+3. converting web app to mobile app and publish on play store
+4. converting to marathi
